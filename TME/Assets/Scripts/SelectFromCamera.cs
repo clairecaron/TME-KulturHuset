@@ -1,9 +1,11 @@
 
 
 
-  
+using System.Collections.Generic;
+using UnityEngine.XR.ARFoundation;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.ARSubsystems;
 
 public class SelectFromCamera : MonoBehaviour
 {
@@ -18,7 +20,7 @@ public class SelectFromCamera : MonoBehaviour
     [SerializeField]
     private Color inactiveColor = Color.gray;
 
-  
+
 
     [SerializeField]
     private Camera arCamera;
@@ -39,60 +41,53 @@ public class SelectFromCamera : MonoBehaviour
     [SerializeField]
     private GameObject selector;
 
-   
-    void Start() => ChangeSelectedObject(placedObjects[0]);
+
+    //void Start() => ChangeSelectedObject(placedObjects[0]);
 
 
 
     void Update()
     {
-      
 
-        if (generateRayAfterSeconds <= rayTimer)
+        if (Input.touchCount > 0)
         {
-            // creates a ray from the screen point origin 
-            Ray ray = arCamera.ScreenPointToRay(selector.transform.position);
-
-            RaycastHit hitObject;
-            if (Physics.Raycast(ray, out hitObject, rayDistanceFromCamera))
+            Touch touch = Input.GetTouch(0);
+            touchPosition = touch.position;
+            if (touch.phase == TouchPhase.Began)
             {
-                PlacementObject placementObject = hitObject.transform.GetComponent<PlacementObject>();
-                if (placementObject != null)
+                Ray ray = arCamera.ScreenPointToRay(touch.position);
+                RaycastHit hitObject;
+                if (Physics.Raycast(ray, out hitObject))
                 {
-                    ChangeSelectedObject(placementObject);
+                    PlacementObject placementObject = hitObject.transform.GetComponent<PlacementObject>();
+                    if (placementObject != null)
+                    {
+                        ChangeSelectedObject(placementObject);
+                    }
+
                 }
-            }
-            else
-            {
-                ChangeSelectedObject();
-            }
 
-            rayTimer = 0;
+            }
         }
-        else
-        {
-            rayTimer += Time.deltaTime * 1.0f;
-        }
-    }
 
-    void ChangeSelectedObject(PlacementObject selected = null)
-    {
-        foreach (PlacementObject current in placedObjects)
+        void ChangeSelectedObject(PlacementObject selected = null)
         {
-            MeshRenderer meshRenderer = current.GetComponent<MeshRenderer>();
-            if (selected != current)
+            foreach (PlacementObject current in placedObjects)
             {
-                current.Selected = false;
-                meshRenderer.material.color = inactiveColor;
-            }
-            else
-            {
-                current.Selected = true;
-                meshRenderer.material.color = activeColor;
-            }
+                MeshRenderer meshRenderer = current.GetComponent<MeshRenderer>();
+                if (selected != current)
+                {
+                    current.IsSelected = false;
+                    meshRenderer.material.color = inactiveColor;
+                }
+                else
+                {
+                    current.IsSelected = true;
+                    meshRenderer.material.color = activeColor;
+                }
 
-            if (displayOverlay)
-                current.ToggleOverlay();
+               
+            }
         }
     }
 }

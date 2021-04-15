@@ -178,11 +178,6 @@ namespace UnityEngine.XR.ARFoundation.Samples
             LoadScene("ARWorldMap");
         }
 
-        public void ARKitGeoAnchorsButtonPressed()
-        {
-            LoadScene("ARKitGeoAnchors");
-        }
-
         public void CpuImagesButtonPressed()
         {
             LoadScene("CpuImages");
@@ -220,7 +215,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         public void ConfigChooserButtonPressed()
         {
-            LoadScene("ConfigurationChooser");
+            LoadScene("MatDryck");
         }
 
         public void FaceTrackingMenuButtonPressed()
