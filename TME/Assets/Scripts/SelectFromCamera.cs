@@ -9,7 +9,7 @@ using UnityEngine.XR.ARSubsystems;
 
 public class SelectFromCamera : MonoBehaviour
 {
-
+    public Text text;
 
     [SerializeField]
     private PlacementObject[] placedObjects;
@@ -38,9 +38,6 @@ public class SelectFromCamera : MonoBehaviour
 
     private float rayTimer = 0;
 
-    [SerializeField]
-    private GameObject selector;
-
 
     //void Start() => ChangeSelectedObject(placedObjects[0]);
 
@@ -63,8 +60,18 @@ public class SelectFromCamera : MonoBehaviour
                     if (placementObject != null)
                     {
                         ChangeSelectedObject(placementObject);
+                    }               
+                }
+                else
+                {
+                    foreach (PlacementObject p in placedObjects)
+                    {
+                        p.IsSelected = false;
+                        MeshRenderer meshRenderer = p.GetComponent<MeshRenderer>();
+                        meshRenderer.material.color = inactiveColor;
+                        p.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                        text.text = "0";
                     }
-
                 }
 
             }
@@ -77,16 +84,19 @@ public class SelectFromCamera : MonoBehaviour
                 MeshRenderer meshRenderer = current.GetComponent<MeshRenderer>();
                 if (selected != current)
                 {
-                    current.IsSelected = false;
+                    current.IsSelected = false;               
                     meshRenderer.material.color = inactiveColor;
+                    current.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                 }
                 else
                 {
                     current.IsSelected = true;
                     meshRenderer.material.color = activeColor;
-                }
-
-               
+                    string t = current.name;
+                    text.text = t;
+                    current.transform.localScale = new Vector3((current.transform.localScale.x + 1.1f), (current.transform.localScale.y + 1.1f),
+                        (current.transform.localScale.z + 1.1f));
+                }               
             }
         }
     }

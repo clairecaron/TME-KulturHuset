@@ -65,7 +65,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
                 // This does not move the content; instead, it moves and orients the ARSessionOrigin
                 // such that the content appears to be at the raycast hit position.
-                m_SessionOrigin.MakeContentAppearAt(content, hitPose.position, m_Rotation);
+                //m_SessionOrigin.MakeContentAppearAt(content, hitPose.position, m_Rotation);
             }
         }
 
