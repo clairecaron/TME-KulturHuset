@@ -10,7 +10,9 @@ using TMPro;
 
 public class SelectFromCamera : MonoBehaviour
 {
-    public TMP_Text text;
+    public TMP_Text text, text2;
+    public int state;
+        
 
     [SerializeField]
     private PlacementObject[] placedObjects;
@@ -21,7 +23,7 @@ public class SelectFromCamera : MonoBehaviour
     [SerializeField]
     private Color inactiveColor = Color.gray;
 
-    public GameObject guest, book;
+    public GameObject guest, book, old;
 
     [SerializeField]
     private Camera arCamera;
@@ -118,13 +120,36 @@ public class SelectFromCamera : MonoBehaviour
                     {
                         current.IsSelected = true;
                         meshRenderer.material.color = activeColor;
-                        string t = current.name;
-                        text.text = t;
-                        current.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
-                        if (current.name == "Just nu...")
+                        string t = "";
+                        if (current.name == "Cafe Panorama")
                         {
+                            t = "Cafe Panorama";
+                        }
+                        else if (current.name == "Teaterbaren")
+                        {
+                            t = "Teaterbaren";
+                        }
+                        else if (current.name == "Stories")
+                        {
+                            t = "Stories";
+                        }
+                        else if (current.name == "Nooshi")
+                        {
+                            t = "Nooshi";
+                        }
+                        else if (current.name == "Just nu...")
+                        {
+                            t = "Right now... on top of our amazing menus, meet ???Chef with 10% off + Book it and maybe win a samarbete tote bag KULTURHUSET X ???CHEF. But you only have until the 25th of April, after that they leave, damn...";
                             guest.SetActive(true);
-                        }                                               
+                        }
+                        else if (current.name == "Old")
+                        {
+                            t = "Click on something to check our menus <3";
+                            old.SetActive(true);
+                            text2.text = "You missed that... but check our main board and see what's up now! <3";
+                        }
+                        text.text = t;
+                        current.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);                                             
                     }
                     
                 }                
