@@ -10,9 +10,9 @@ using TMPro;
 
 public class SelectFromCamera : MonoBehaviour
 {
-    public TMP_Text text, text2;
     public int state;
-        
+    public TMP_Text text, text2;
+    public TMP_Text[] boards;
 
     [SerializeField]
     private PlacementObject[] placedObjects;
@@ -40,10 +40,6 @@ public class SelectFromCamera : MonoBehaviour
     private float generateRayAfterSeconds = 2.0f;
 
     private float rayTimer = 0;
-
-
-    //void Start() => ChangeSelectedObject(placedObjects[0]);
-
 
     void Update()
     {
@@ -120,35 +116,57 @@ public class SelectFromCamera : MonoBehaviour
                     {
                         current.IsSelected = true;
                         meshRenderer.material.color = activeColor;
-                        string t = "";
                         if (current.name == "Cafe Panorama")
                         {
-                            t = "Cafe Panorama";
+                            boards[0].text = "Måndag" + "\n" + "*Champinjonsoppa" + "\n" + "*Grillad Kotlett med Potatisgratäng" + "\n" + "*Mandelfisk med Äggsås" + "\n"+ "*Huset Lasagne" + "\n" + "*Vegetarisk Paj med Grönsallad";
+                            boards[1].text = "Tisdag" + "\n" + "*Broccolisoppa" + "\n" + "*Grillad Kycklingfilé med Ris & Vitlökssås" + "\n" + "*Pocherad Torsk med Potatis & Grönsaker" + "\n" + "*Dagens Pasta" + "\n" + "*Vegetarisk Paj med Grönsallad";
+                            boards[2].text = "Onsdag" + "\n" + "*Skaldjurssoppa toppad med Aiol" + "\n" + "*Wallenbergare med Potatispuré, Gröna Ärtor & Skirat Smör" + "\n" + "*Panerad Koljafilé med Skaldjurssås" + "\n" + "*Huset Lasagne" + "\n" + "*Vegetarisk Paj med Grönsallad";
+                            boards[3].text = "Cafe Panorama" + "\n" + "Veckans lunch V. 16" + "\n" + "Lunchpris 110:-" + "\n" + "11h-17h-Måndag-Lördag";
+                            boards[4].text = "Torsdag" + "\n" + "*Kantarellsoppa" + "\n" + "*Currykyckling med Ris" + "\n" + "*Pocherad Torsk med Räkor & Vitvinssås" + "\n" + "*Dagens Pasta" + "\n" + "*Vegetarisk Paj med Grönsallad";
+                            boards[5].text = "Fredag" + "\n" + "*Linssoppa" + "\n" + "*Grillad Kotlettrad med Potatisgratäng" + "\n" + "*Laxfilé med Dillstuvad Potatis" + "\n" + "*Dagens Pasta" + "\n" + "*Vegetarisk Paj med Grönsallad";
+                            boards[6].text = "Lördag" + "\n" + "*Fisksoppa med Aioli" + "\n" + "*Köttgryta med Ris" + "\n" + "*Fiskgryta med Ris" + "\n" + "*Huset Lasagne" + "\n" + "*Vegetarisk Paj med Grönsallad";
                         }
                         else if (current.name == "Teaterbaren")
                         {
-                            t = "Teaterbaren";
+                            boards[0].text = "Måndag";
+                            boards[1].text = "Tisdag";
+                            boards[2].text = "Onsdag";
+                            boards[3].text = "Teaterbaren";
+                            boards[4].text = "Torsdag";
+                            boards[5].text = "Fredag";
+                            boards[6].text = "Helg";
                         }
                         else if (current.name == "Stories")
                         {
-                            t = "Stories";
+                            boards[0].text = "Måndag";
+                            boards[1].text = "Tisdag";
+                            boards[2].text = "Onsdag";
+                            boards[3].text = "Stories";
+                            boards[4].text = "Torsdag";
+                            boards[5].text = "Fredag";
+                            boards[6].text = "Helg";
                         }
                         else if (current.name == "Nooshi")
                         {
-                            t = "Nooshi";
+                            boards[0].text = "Starter";
+                            boards[1].text = "Main";
+                            boards[2].text = "Noodles and fried rice";
+                            boards[3].text = "Nooshi";
+                            boards[4].text = "Sushi";
+                            boards[5].text = "Desert";
+                            boards[6].text = "";
                         }
                         else if (current.name == "Just nu...")
                         {
-                            t = "Right now... on top of our amazing menus, meet ???Chef with 10% off + Book it and maybe win a samarbete tote bag KULTURHUSET X ???CHEF. But you only have until the 25th of April, after that they leave, damn...";
+                            text.text = "Right now... on top of our amazing menus, meet ???Chef with 10% off + Book it and maybe win a samarbete tote bag KULTURHUSET X ???CHEF. But you only have until the 25th of April, after that they leave, damn...";
                             guest.SetActive(true);
                         }
                         else if (current.name == "Old")
                         {
-                            t = "Click on something to check our menus <3";
+                            boards[3].text = "Click on something to check our menus!";
                             old.SetActive(true);
-                            text2.text = "You missed that... but check our main board and see what's up now! <3";
+                            text2.text = "You missed that... but check our main board and see what's up now!";
                         }
-                        text.text = t;
                         current.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);                                             
                     }
                     
