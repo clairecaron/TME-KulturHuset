@@ -10,8 +10,6 @@ using TMPro;
 
 public class SelectFromCamera : MonoBehaviour
 {
-    public int state;
-    public TMP_Text text, text2;
     public TMP_Text[] boards;
 
     [SerializeField]
@@ -30,16 +28,10 @@ public class SelectFromCamera : MonoBehaviour
 
     private Vector2 touchPosition = default;
 
-    [SerializeField]
-    private bool displayOverlay = false;
-
-    [SerializeField]
-    private float rayDistanceFromCamera = 10.0f;
-
-    [SerializeField]
-    private float generateRayAfterSeconds = 2.0f;
-
-    private float rayTimer = 0;
+    //private bool displayOverlay = false;    
+    //private float rayDistanceFromCamera = 10.0f; 
+    //private float generateRayAfterSeconds = 2.0f;
+    //private float rayTimer = 0;
 
     void Update()
     {
@@ -158,14 +150,19 @@ public class SelectFromCamera : MonoBehaviour
                         }
                         else if (current.name == "Just nu...")
                         {
-                            text.text = "Right now... on top of our amazing menus, meet ???Chef with 10% off + Book it and maybe win a samarbete tote bag KULTURHUSET X ???CHEF. But you only have until the 25th of April, after that they leave, damn...";
+                            boards[0].text = "";
+                            boards[1].text = "";
+                            boards[2].text = "22/04 - 23/04" + "\n" + "Boka ett cinemabiljett och vi bjuder på fika på Cafe Panorama";
+                            boards[3].text = "Just nu..." + "\n" + "Ikväll 20h-24h:" + "\n" + "Chefsmästaren ??? lagar mat på Stories, boka bord och få träffa dem!";
+                            boards[4].text = "25/04" + "\n" + "Boka bord på Teaterbaren och få 10% rabatt";
+                            boards[5].text = "Vi planerar... stay stuned";
+                            boards[6].text = "";
                             guest.SetActive(true);
                         }
                         else if (current.name == "Old")
                         {
-                            boards[3].text = "Click on something to check our menus!";
                             old.SetActive(true);
-                            text2.text = "You missed that... but check our main board and see what's up now!";
+                            boards[7].text = "You missed that... but check our main board and see what's up now!";
                         }
                         current.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);                                             
                     }

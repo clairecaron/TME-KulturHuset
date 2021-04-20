@@ -25,7 +25,7 @@ public class Rotate : MonoBehaviour
     {
         // How much we've changed
         float delta = value - this.previousValue;
-        this.objectToRotate.transform.Rotate(0, slider.value, 0);
+        this.objectToRotate.transform.rotation = Quaternion.AngleAxis(slider.value, Vector3.up);
 
         // Set our previous value for the next change
         this.previousValue = value;
