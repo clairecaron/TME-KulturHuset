@@ -21,7 +21,7 @@ public class SelectFromCamera : MonoBehaviour
     [SerializeField]
     private Color inactiveColor = Color.gray;
 
-    public GameObject guest, book, old;
+    public GameObject guest, old;
 
     [SerializeField]
     private Camera arCamera;
@@ -51,7 +51,7 @@ public class SelectFromCamera : MonoBehaviour
                     PlacementObject placementObject = hitObject.transform.GetComponent<PlacementObject>();
                     if (placementObject.name == "BookIn")
                     {
-                        SetBook();
+                        
                     }
                     if (placementObject != null)
                     {
@@ -75,28 +75,13 @@ public class SelectFromCamera : MonoBehaviour
             }
         }
 
-        void SetBook()
-        {
-            if (book.active)
-            {
-                book.SetActive(false);
-            }
-            else
-            {
-                book.SetActive(true);
-            }
-           
-        }
+    
 
         void ChangeSelectedObject(PlacementObject selected = null)
         {
             foreach (PlacementObject current in placedObjects)
             {
-               
-                if (current.name == "BookOut")
-                {
-                    book.SetActive(false);
-                }
+              
                 if (current.name != "BookIn" && current.name != "BookOut")
                 {
                     MeshRenderer meshRenderer = current.GetComponent<MeshRenderer>();
@@ -178,13 +163,11 @@ public class SelectFromCamera : MonoBehaviour
                             boards[4].text = "06/05" + "\n" + "\n" + "Boka bord på Nooshi och kanske vinn en sushi-matlagningskurs";
                             boards[5].text = "Nästa vecka" + "\n" + "\n" + "Vi har en ny gästkock, stay tuned...";
                             boards[6].text = "";
-                            guest.SetActive(true);
-                        }
-                        else if (current.name == "Old")
-                        {
                             old.SetActive(true);
                             boards[7].text = "You missed that... but check our main board and see what's up now!";
+                            guest.SetActive(true);
                         }
+                        
                         current.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);                                             
                     }
                     
