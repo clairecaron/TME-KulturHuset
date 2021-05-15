@@ -99,7 +99,7 @@ public class SelectFromCamera : MonoBehaviour
                         {
                             boards[0].text = "Måndag" + "\n" + "\n" + "*Champinjonsoppa" + "\n" + "*Grillad Kotlett med Potatisgratäng" + "\n" + "*Mandelfisk med Äggsås" + "\n" + "*Huset Lasagne" + "\n" + "*Vegetarisk Paj med Grönsallad";
                             boards[1].text = "Tisdag" + "\n" + "\n" + "*Broccolisoppa" + "\n" + "*Grillad Kycklingfilé med Ris & Vitlökssås" + "\n" + "*Pocherad Torsk med Potatis & Grönsaker" + "\n" + "*Dagens Pasta" + "\n" + "*Vegetarisk Paj med Grönsallad";
-                            boards[2].text = "Onsdag" + "\n" + "\n" + "*Skaldjurssoppa toppad med Aiol" + "\n" + "*Wallenbergare med Potatispuré, Gröna Ärtor & Skirat Smör" + "\n" + "*Panerad Koljafilé med Skaldjurssås" + "\n" + "*Huset Lasagne" + "\n" + "*Vegetarisk Paj med Grönsallad";
+                            boards[2].text = "Onsdag" + "\n" + "\n" + "*Skaldjurssoppa toppad med Aioli" + "\n" + "*Wallenbergare med Potatispuré, Gröna Ärtor & Skirat Smör" + "\n" + "*Huset Lasagne" + "\n" + "*Vegetarisk Paj med Grönsallad";
                             boards[3].text = "Cafe Panorama" + "\n" + "\n" + "Veckans lunch V. 16" + "\n" + "\n" + "Lunchpris 110:-" + "\n" + "\n" + "11h-17h Måndag-Lördag";
                             boards[4].text = "Torsdag" + "\n" + "\n" + "*Kantarellsoppa" + "\n" + "*Currykyckling med Ris" + "\n" + "*Pocherad Torsk med Räkor & Vitvinssås" + "\n" + "*Dagens Pasta" + "\n" + "*Vegetarisk Paj med Grönsallad";
                             boards[5].text = "Fredag" + "\n" + "\n" + "*Linssoppa" + "\n" + "*Grillad Kotlettrad med Potatisgratäng" + "\n" + "*Laxfilé med Dillstuvad Potatis" + "\n" + "*Dagens Pasta" + "\n" + "*Vegetarisk Paj med Grönsallad";
@@ -163,9 +163,9 @@ public class SelectFromCamera : MonoBehaviour
                             boards[4].text = "06/05" + "\n" + "\n" + "Boka bord på Nooshi och kanske vinn en sushi-matlagningskurs";
                             boards[5].text = "Nästa vecka" + "\n" + "\n" + "Vi har en ny gästkock, stay tuned...";
                             boards[6].text = "";
-                            old.SetActive(true);
+                            //old.SetActive(true);
                             boards[7].text = "You missed that... but check our main board and see what's up now!";
-                            guest.SetActive(true);
+                            //guest.SetActive(true);
                         }
                         
                         current.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);                                             
