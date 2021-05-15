@@ -64,6 +64,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
                 if (spawnedObject == null)
                 {
                     spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
+                    //spawnedObject.transform.rotation = Quaternion.Euler (0f, 0f, 0f);
                 }
                 else
                 {
